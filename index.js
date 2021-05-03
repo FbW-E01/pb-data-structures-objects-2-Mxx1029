@@ -119,18 +119,27 @@ for (const key in programming) {
 
 // - Create an object method where if the keys "isChallenging" and "isRewarding" have values of "true", then return "Learning the programming languages: "JavaScript, Python, Ruby, Go" is rewarding and challenging. 
 
-const printSentence = () => {
-    if (this.isChallenging === true && this.isRewarding === true) {
-        console.log(`Learning the programming languages ${this.languages.join(", ")} is rewarding and challenging.`);
+function printSentence() {
+    if (this["isChallenging"] === true && this["isRewarding"] === true) {
+        console.log(`Learning the programming languages: "${this["languages"].join(", ")}" is rewarding and challenging.`);
     } else {
         console.log("Hä?")
     };
 };
 
 programming.printSentence = printSentence;
-console.log(programming.printSentence());
-// Don't understand why it prints "Hä?" and not the sentence --> any leads??
+programming.printSentence();
 
+// Solution by André to add the function to the object after declaring it -- so much easier!!
+// programming.challengingRewarding = function() {
+//     if (this["isChallenging"] === true && this["isRewarding"] === true) {
+//         console.log(`Learning the programming languages: "${this["languages"].join(", ")}" is rewarding and challenging.`);
+//     } else {
+//         console.log("Hä?")
+//     };
+// };
+
+// programming.challengingRewarding();
 
 // **Bonus:** In a comment, explain what is printed if we console.log an object method without calling it and why.
 console.log(programming.printSentence);
